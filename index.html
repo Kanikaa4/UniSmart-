@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniSmart | AI-Powered Learning Management System</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="dark-theme">
+    
+    <!-- NAVIGATION BAR (LOBBY / MARKETING SCREEN) -->
+    <header class="header" id="marketingHeader">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i data-lucide="graduation-cap"></i>
+            </div>
+            <span class="logo-text">Uni<span class="gradient-text">Smart</span></span>
+        </div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#metrics">Success Metrics</a>
+            <a href="#future">Future Scope</a>
+        </nav>
+        <button class="btn btn-primary" id="btnLaunchPortal">
+            <span>Launch Portal</span>
+            <i data-lucide="arrow-up-right"></i>
+        </button>
+    </header>
+
+    <!-- LANDING PAGE VIEW -->
+    <main class="marketing-view" id="marketingView">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <div class="hero-content">
+                <div class="badge-pill">
+                    <span class="badge-dot"></span>
+                    <span>AI-Powered LMS Platform</span>
+                </div>
+                <h1 class="hero-title">The Future of University <br><span class="gradient-text">Learning & Attendance</span></h1>
+                <p class="hero-subtitle">Optimize class attendance, predict student performance, and automate management tasks with our smart role-based platform.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large btn-glow" id="heroStartBtn">Get Started</button>
+                    <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="features-section" id="features">
+            <div class="section-header">
+                <h2 class="section-title">Revolutionizing University Management</h2>
+                <p class="section-subtitle">A state-of-the-art suite designed for students, faculty, and administrative headers.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+                    <h3>Secure OTP Login</h3>
+                    <p>Passwordless authentication via email OTP for instant, secure access for all user roles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="calendar"></i></div>
+                    <h3>Attendance Grid</h3>
+                    <p>Intuitive monthly/weekly calendar tools enabling faculty to mark, edit, and audit attendance logs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="brain-circuit"></i></div>
+                    <h3>Smart AI Insights</h3>
+                    <p>Predict student absenteeism and dropout risk patterns early to design helpful interventions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="file-spreadsheet"></i></div>
+                    <h3>Data Sync</h3>
+                    <p>Import student rosters via CSV/Excel sheets and export structured reports with a single click.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Metrics -->
+        <section class="metrics-section" id="metrics">
+            <div class="section-header">
+                <h2 class="section-title font-gradient">Engineered for High Performance</h2>
+                <p class="section-subtitle">Real-world indicators backing our technical design and database configurations.</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-val" data-target="2">&lt; 2s</div>
+                    <div class="metric-lbl">OTP Authentication Login Time</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-val" data-target="85">&gt; 85%</div>
+                    <div class="metric-lbl">AI Prediction Roster Accuracy</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-val" data-target="10">&lt; 10s</div>
+                    <div class="metric-lbl">Full Roster Excel Sheet Export Time</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Scope Section -->
+        <section class="future-section" id="future">
+            <div class="section-header">
+                <h2 class="section-title">On The Horizon</h2>
+                <p class="section-subtitle">Future iterations expansion plan scheduled for upcoming releases.</p>
+            </div>
+            <div class="future-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-badge">Q3 2026</div>
+                    <div class="timeline-content">
+                        <h3>Interactive Student & Parent Portals</h3>
+                        <p>Direct view panels for parents to track progress metrics and students to check grades.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">Q4 2026</div>
+                    <div class="timeline-content">
+                        <h3>Cross-Platform Mobile Apps</h3>
+                        <p>Dedicated Android & iOS builds using React Native to deliver push alerts and attendance reminders.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">Q1 2027</div>
+                    <div class="timeline-content">
+                        <h3>24/7 AI Academic Assistant</h3>
+                        <p>LLM conversational chatbot helping students query assignments, deadlines, and schedule classes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PORTAL AUTHENTICATION VIEW -->
+    <div class="auth-overlay hidden" id="authView">
+        <div class="auth-card glass-panel">
+            <button class="btn-close" id="btnExitAuth"><i data-lucide="x"></i></button>
+            <div class="auth-header">
+                <div class="auth-logo"><i data-lucide="lock"></i></div>
+                <h2>UniSmart Secure Portal</h2>
+                <p>Select your dashboard role to test authentication</p>
+            </div>
+
+            <!-- Role Selector -->
+            <div class="role-selector-grid">
+                <div class="role-option active" data-role="admin">
+                    <i data-lucide="shield-alert"></i>
+                    <span>Super Admin</span>
+                </div>
+                <div class="role-option" data-role="faculty">
+                    <i data-lucide="presentation"></i>
+                    <span>Faculty</span>
+                </div>
+                <div class="role-option" data-role="student">
+                    <i data-lucide="user"></i>
+                    <span>Student</span>
+                </div>
+            </div>
+
+            <!-- Form: Step 1 (Email) -->
+            <div class="auth-step active" id="authStepEmail">
+                <div class="form-group">
+                    <label for="authEmail">Email Address</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="mail"></i>
+                        <input type="email" id="authEmail" placeholder="admin@unismart.edu" required>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block" id="btnSendOtp">
+                    <span>Send Verification Code</span>
+                    <i data-lucide="send"></i>
+                </button>
+            </div>
+
+            <!-- Form: Step 2 (OTP) -->
+            <div class="auth-step hidden" id="authStepOtp">
+                <div class="otp-notif animate-pulse">
+                    <i data-lucide="info"></i>
+                    <span>Simulated email sent! Code: <strong id="simulatedOtpCode">1234</strong></span>
+                </div>
+                <div class="form-group">
+                    <label for="authOtp">Enter 4-Digit OTP</label>
+                    <div class="otp-input-container">
+                        <input type="text" maxlength="1" class="otp-digit" data-idx="1">
+                        <input type="text" maxlength="1" class="otp-digit" data-idx="2">
+                        <input type="text" maxlength="1" class="otp-digit" data-idx="3">
+                        <input type="text" maxlength="1" class="otp-digit" data-idx="4">
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block" id="btnVerifyOtp">
+                    <span>Verify & Login</span>
+                    <i data-lucide="check-circle"></i>
+                </button>
+                <button class="btn btn-link btn-block" id="btnBackToEmail">Change Email</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD WRAPPER -->
+    <div class="dashboard-layout hidden" id="dashboardView">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon"><i data-lucide="graduation-cap"></i></div>
+                    <span class="logo-text">UniSmart</span>
+                </div>
+                <div class="user-badge">
+                    <div class="avatar" id="sidebarAvatar">A</div>
+                    <div class="user-info">
+                        <h4 id="sidebarUserName">Dr. Sarah Jenkins</h4>
+                        <p id="sidebarUserRole" class="gradient-text">Super Admin</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation menus dynamically swapped depending on role -->
+            <nav class="sidebar-nav" id="sidebarNavItems">
+                <!-- Admin items, Faculty items, Student items injected via JS -->
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" id="btnLogOut">
+                    <i data-lucide="log-out"></i>
+                    <span>Exit Portal</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Viewport -->
+        <main class="dashboard-content">
+            <!-- Top Dashboard Bar -->
+            <header class="top-bar">
+                <div class="welcome-heading">
+                    <h1 id="dashViewTitle">Dashboard Overview</h1>
+                    <p id="dashViewSubtitle">Welcome back! Manage your workspace panel.</p>
+                </div>
+                <div class="top-actions">
+                    <button class="icon-btn tooltip" data-tooltip="System Status">
+                        <i data-lucide="activity"></i>
+                    </button>
+                    <button class="icon-btn tooltip" data-tooltip="Notifications" id="btnNotifBell">
+                        <i data-lucide="bell"></i>
+                        <span class="notif-badge hidden"></span>
+                    </button>
+                    <button class="btn btn-secondary" id="btnBackToLobby">
+                        <i data-lucide="globe"></i>
+                        <span>Lobby</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Dynamic Tabs Container -->
+            <div class="tab-viewport">
+                
+                <!-- ================= SUPER ADMIN TAB VIEW ================= -->
+                <div class="dashboard-tab hidden" id="tabAdminOverview">
+                    <!-- Admin Statistics -->
+                    <div class="stats-row">
+                        <div class="stat-box glass-panel">
+                            <div class="stat-icon icon-indigo"><i data-lucide="presentation"></i></div>
+                            <div class="stat-content">
+                                <h3>Active Faculty</h3>
+                                <div class="val" id="adminStatFacultyCount">12</div>
+                            </div>
+                        </div>
+                        <div class="stat-box glass-panel">
+                            <div class="stat-icon icon-teal"><i data-lucide="users"></i></div>
+                            <div class="stat-content">
+                                <h3>Total Students</h3>
+                                <div class="val" id="adminStatStudentCount">128</div>
+                            </div>
+                        </div>
+                        <div class="stat-box glass-panel">
+                            <div class="stat-icon icon-purple"><i data-lucide="building"></i></div>
+                            <div class="stat-content">
+                                <h3>Departments</h3>
+                                <div class="val">6</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Operations Grid -->
+                    <div class="dashboard-grid">
+                        
+                        <!-- Create Faculty Panel -->
+                        <div class="panel glass-panel">
+                            <div class="panel-header">
+                                <h2><i data-lucide="user-plus"></i> Register New Faculty</h2>
+                            </div>
+                            <form class="panel-form" id="formCreateFaculty">
+                                <div class="form-group">
+                                    <label for="facName">Full Name</label>
+                                    <input type="text" id="facName" placeholder="Dr. Alan Turing" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="facDept">Department</label>
+                                        <select id="facDept">
+                                            <option value="Computer Science">Computer Science</option>
+                                            <option value="Electrical Engineering">Electrical Engineering</option>
+                                            <option value="Mathematics">Mathematics</option>
+                                            <option value="Physics">Physics</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="facRole">Access Level</label>
+                                        <select id="facRole">
+                                            <option value="Professor">Professor</option>
+                                            <option value="Associate Professor">Associate Professor</option>
+                                            <option value="Assistant Professor">Assistant Professor</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="facEmail">University Email</label>
+                                    <input type="email" id="facEmail" placeholder="alan.turing@unismart.edu" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Add Faculty Member</button>
+                            </form>
+                        </div>
+
+                        <!-- Import Students via CSV -->
+                        <div class="panel glass-panel">
+                            <div class="panel-header">
+                                <h2><i data-lucide="upload-cloud"></i> Upload Student Database</h2>
+                            </div>
+                            <div class="upload-dropzone" id="csvDropzone">
+                                <i data-lucide="file-spreadsheet" class="upload-icon"></i>
+                                <h3>Drag & Drop student CSV/Excel file here</h3>
+                                <p>or click to select file from desktop</p>
+                                <input type="file" id="csvFileInput" accept=".csv" class="hidden">
+                            </div>
+                            <div class="upload-progress-container hidden" id="uploadProgressBox">
+                                <div class="progress-info">
+                                    <span id="uploadFileName">student_list.csv</span>
+                                    <span id="uploadPercent">45%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" id="uploadBarFill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div class="instructions-card">
+                                <h4><i data-lucide="info"></i> Quick Simulator Helper</h4>
+                                <p>Need a file to test? <a href="#" id="lnkDownloadDemoCsv">Download a template CSV</a> or simply click the box to automatically import a roster of 10 student profiles!</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Rosters table -->
+                    <div class="panel glass-panel mt-20">
+                        <div class="panel-header flex-row">
+                            <h2><i data-lucide="users"></i> Live Faculty Registrations</h2>
+                            <div class="table-actions">
+                                <input type="text" class="table-search" placeholder="Search faculty..." id="searchFacultyTable">
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableFacultyRoster">
+                                    <!-- Injected via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= FACULTY TAB VIEW ================= -->
+                <div class="dashboard-tab hidden" id="tabFacultyAttendance">
+                    <!-- Faculty Overview -->
+                    <div class="stats-row">
+                        <div class="stat-box glass-panel">
+                            <div class="stat-icon icon-indigo"><i data-lucide="calendar"></i></div>
+                            <div class="stat-content">
+                                <h3>Overall Class Attendance</h3>
+                                <div class="val" id="facStatAvgAttendance">79.2%</div>
+                            </div>
+                        </div>
+                        <div class="stat-box glass-panel">
+                            <div class="stat-icon icon-purple"><i data-lucide="shield-alert"></i></div>
+                            <div class="stat-content">
+                                <h3>At-Risk Students (&lt;75%)</h3>
+                                <div class="val" id="facStatAtRiskCount">3</div>
+                            </div>
+                        </div>
+                        <div class="stat-box glass-panel">
+                            <div class="stat-icon icon-teal"><i data-lucide="sparkles"></i></div>
+                            <div class="stat-content">
+                                <h3>AI Attendance Prediction</h3>
+                                <div class="val" id="facStatAIPredict">84.1%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Attendance Dashboard Grid -->
+                    <div class="dashboard-grid grid-1-2">
+                        
+                        <!-- Attendance Calendar / Controls -->
+                        <div class="panel glass-panel">
+                            <div class="panel-header flex-row">
+                                <h2><i data-lucide="calendar-days"></i> Roster Calendar</h2>
+                                <div class="calendar-controls">
+                                    <button class="icon-btn-small" id="btnPrevMonth"><i data-lucide="chevron-left"></i></button>
+                                    <span class="calendar-title" id="calendarMonthTitle">July 2026</span>
+                                    <button class="icon-btn-small" id="btnNextMonth"><i data-lucide="chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div class="calendar-body">
+                                <div class="calendar-weekdays">
+                                    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                                </div>
+                                <div class="calendar-days" id="calendarDaysGrid">
+                                    <!-- Injected dynamically via JS -->
+                                </div>
+                            </div>
+                            <div class="calendar-legend">
+                                <span class="legend-item"><span class="dot dot-active"></span>Active Date</span>
+                                <span class="legend-item"><span class="dot dot-logged"></span>Log Recorded</span>
+                                <span class="legend-item"><span class="dot dot-empty"></span>No Schedule</span>
+                            </div>
+                        </div>
+
+                        <!-- Class Attendance Daily Logger -->
+                        <div class="panel glass-panel">
+                            <div class="panel-header flex-row">
+                                <div>
+                                    <h2 id="loggerHeaderDate">Attendance: July 9, 2026</h2>
+                                    <p class="panel-sub" id="loggerStatusText">Record attendance roster for today's session</p>
+                                </div>
+                                <button class="btn btn-secondary btn-small" id="btnExportAttendanceReport">
+                                    <i data-lucide="file-down"></i>
+                                    <span>Export CSV</span>
+                                </button>
+                            </div>
+                            
+                            <div class="student-logger-container">
+                                <div class="logger-filters">
+                                    <button class="btn-filter active" data-filter="all">All</button>
+                                    <button class="btn-filter" data-filter="present">Present</button>
+                                    <button class="btn-filter" data-filter="absent">Absent</button>
+                                    <div class="quick-batch">
+                                        <button class="btn-text-link" id="btnBatchPresent">Mark All Present</button>
+                                        <span>/</span>
+                                        <button class="btn-text-link" id="btnBatchAbsent">Mark All Absent</button>
+                                    </div>
+                                </div>
+                                <div class="student-list" id="studentLoggerList">
+                                    <!-- Injected via JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- FACULTY AI INSIGHTS VIEW -->
+                <div class="dashboard-tab hidden" id="tabFacultyAIInsights">
+                    <div class="panel glass-panel">
+                        <div class="panel-header">
+                            <h2><i data-lucide="sparkles"></i> AI Smart Insights Engine</h2>
+                            <p class="panel-sub">Neural Network forecasts attendance patterns and models dropout rates based on activity, grades, and logs.</p>
+                        </div>
+                        
+                        <div class="ai-dashboard-grid">
+                            <div class="ai-chart-card">
+                                <h3>Attendance Trend & Forecasting (7-Day Projection)</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="chartAIForecast"></canvas>
+                                </div>
+                            </div>
+                            <div class="ai-chart-card">
+                                <h3>Student Risk Classification Matrix</h3>
+                                <div class="chart-wrapper">
+                                    <canvas id="chartRiskMatrix"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="risk-table-container">
+                            <h3>High-Risk Student Interventions Needed</h3>
+                            <table class="data-table risk-table">
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Roll Number</th>
+                                        <th>Current Att.</th>
+                                        <th>Predicted Drop Probability</th>
+                                        <th>Trigger Cause</th>
+                                        <th>Action Recommended</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableRiskRoster">
+                                    <!-- Injected dynamically via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= STUDENT TAB VIEW ================= -->
+                <div class="dashboard-tab hidden" id="tabStudentOverview">
+                    
+                    <div class="student-welcome-banner glass-panel">
+                        <div class="welcome-text">
+                            <h2>Hey there, <span id="studentHeadingName">John Doe</span>!</h2>
+                            <p>Here is your academic attendance card overview. Maintain above <strong class="gradient-text">75%</strong> to satisfy course eligibility requirements.</p>
+                        </div>
+                        <div class="welcome-badge">
+                            <i data-lucide="award"></i>
+                            <div>
+                                <span>Attendance Eligibility</span>
+                                <strong id="studentEligibilityStatus">ELIGIBLE</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        
+                        <!-- Attendance Progress Circular Ring -->
+                        <div class="panel glass-panel flex-col-center">
+                            <div class="panel-header">
+                                <h2>Current Eligibility</h2>
+                            </div>
+                            <div class="progress-ring-container">
+                                <svg class="progress-ring-svg" width="200" height="200">
+                                    <circle class="ring-bg" cx="100" cy="100" r="80" stroke-width="12"></circle>
+                                    <circle class="ring-fill" id="studentProgressRing" cx="100" cy="100" r="80" stroke-width="12" stroke-dasharray="502" stroke-dashoffset="100"></circle>
+                                </svg>
+                                <div class="progress-ring-text">
+                                    <span id="studentCirclePercentage">82%</span>
+                                    <p>Overall Attendance</p>
+                                </div>
+                            </div>
+                            <div class="card-details">
+                                <p>Classes Attended: <strong id="studentStatClassesAttended">32 / 39</strong> sessions</p>
+                                <p>Estimated Margin: Can skip <strong id="studentStatClassesAllowedToSkip" class="color-teal">2</strong> classes safely</p>
+                            </div>
+                        </div>
+
+                        <!-- Student Personalized AI Recommendations -->
+                        <div class="panel glass-panel">
+                            <div class="panel-header">
+                                <h2><i data-lucide="sparkles"></i> AI Study & Attendance Assistant</h2>
+                            </div>
+                            <div class="ai-recommendations-list" id="studentAiAlertsBox">
+                                <!-- Injected via JS -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Student Personal Log Calendar -->
+                    <div class="panel glass-panel mt-20">
+                        <div class="panel-header">
+                            <h2><i data-lucide="history"></i> Personal Attendance Log Summary</h2>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Class Session</th>
+                                        <th>Instructor</th>
+                                        <th>Status</th>
+                                        <th>Verification Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentPersonalLogTable">
+                                    <!-- Injected via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- NOTIFICATION POPUP PANEL -->
+    <div class="notif-sidebar glass-panel hidden" id="notifPanel">
+        <div class="notif-header">
+            <h3>Notifications</h3>
+            <button class="icon-btn-small" id="btnCloseNotifPanel"><i data-lucide="x"></i></button>
+        </div>
+        <div class="notif-body" id="notifPanelList">
+            <!-- Dynamic alerts -->
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

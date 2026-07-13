@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@config "../tailwind.config.cjs";
+
+@layer base {
+  body {
+    @apply bg-bgbase text-textPrimary font-sans antialiased overflow-x-hidden min-h-screen;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-bgbase;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-glassBorder rounded-md;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-textMuted;
+}
+
+/* Pulse / Animation utilities */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes tabSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-tab-slide {
+  animation: tabSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  @apply bg-glass backdrop-blur-md border border-glassBorder shadow-premium;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primaryIndigo to-secondaryTeal;
+}
