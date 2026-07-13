@@ -326,14 +326,14 @@ When responding:
             }
         }
 
-//         // Add a warning indicating that the API key was not configured and that this is a simulated response
-//        //onst warningPrefix = `*🤖 Note: Gemini API key is not configured. Running in simulated fallback mode. Please add your GEMINI_API_KEY inside the server/.env file.* \n\n`;
-//         return res.status(200).json({ success: true, reply: warningPrefix + responseText });
+        // Add a warning indicating that the API key was not configured and that this is a simulated response
+        const warningPrefix = ''`;
+        return res.status(200).json({ success: true, reply: warningPrefix + responseText });
 
-//     } catch (err) {
-//         console.error(err);
-//         return res.status(500).json({ error: 'Chatbot message processing failed.' });
-//     }
-// };
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Chatbot message processing failed.' });
+    }
+};
 
-//dule.exports = { handleMessage };
+module.exports = { handleMessage };
