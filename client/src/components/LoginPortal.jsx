@@ -52,7 +52,7 @@ export default function LoginPortal({ onLoginSuccess, onClose, API_BASE_URL }) {
       const response = await axios.post(`${API_BASE_URL}/auth/verify-otp`, { email, otp, role });
       setLoading(false);
       playSound('success');
-      
+
       const { token, user } = response.data;
       onLoginSuccess(token, user, role);
     } catch (err) {
@@ -82,7 +82,7 @@ export default function LoginPortal({ onLoginSuccess, onClose, API_BASE_URL }) {
   return (
     <div className="fixed inset-0 bg-bgbase/85 backdrop-blur-md flex items-center justify-center z-[1000] p-4">
       <div className="glass-panel w-full max-w-[440px] p-8 relative rounded-2xl animate-tab-slide">
-        
+
         {/* Close Button */}
         <button onClick={onClose} className="absolute top-5 right-5 text-textSecondary hover:text-textPrimary transition-colors">
           <X size={20} />
@@ -101,22 +101,20 @@ export default function LoginPortal({ onLoginSuccess, onClose, API_BASE_URL }) {
         <div className="grid grid-cols-2 gap-3 mb-8">
           <button
             onClick={() => { setRole('faculty'); setEmail(''); setStep(1); }}
-            className={`flex flex-col items-center gap-2 py-3 rounded-xl border font-semibold text-xs transition-all ${
-              role === 'faculty' 
-                ? 'bg-primaryIndigo/10 border-primaryIndigo text-primaryIndigo shadow-glow' 
-                : 'bg-white/2 border-glassBorder text-textSecondary hover:bg-white/5'
-            }`}
+            className={`flex flex-col items-center gap-2 py-3 rounded-xl border font-semibold text-xs transition-all ${role === 'faculty'
+              ? 'bg-primaryIndigo/10 border-primaryIndigo text-primaryIndigo shadow-glow'
+              : 'bg-white/2 border-glassBorder text-textSecondary hover:bg-white/5'
+              }`}
           >
             <User size={18} />
             <span>Faculty Member</span>
           </button>
           <button
             onClick={() => { setRole('admin'); setEmail(''); setStep(1); }}
-            className={`flex flex-col items-center gap-2 py-3 rounded-xl border font-semibold text-xs transition-all ${
-              role === 'admin' 
-                ? 'bg-primaryIndigo/10 border-primaryIndigo text-primaryIndigo shadow-glow' 
-                : 'bg-white/2 border-glassBorder text-textSecondary hover:bg-white/5'
-            }`}
+            className={`flex flex-col items-center gap-2 py-3 rounded-xl border font-semibold text-xs transition-all ${role === 'admin'
+              ? 'bg-primaryIndigo/10 border-primaryIndigo text-primaryIndigo shadow-glow'
+              : 'bg-white/2 border-glassBorder text-textSecondary hover:bg-white/5'
+              }`}
           >
             <Shield size={18} />
             <span>Super Admin</span>
@@ -165,7 +163,7 @@ export default function LoginPortal({ onLoginSuccess, onClose, API_BASE_URL }) {
         ) : (
           /* Step 2: Verify OTP */
           <form onSubmit={handleVerifyOtp} className="flex flex-col gap-6">
-            
+
             {simulatedOtp && (
               <div className="bg-successGreenBg border border-successGreen/20 text-successGreen px-4 py-3 rounded-lg text-xs font-bold text-center animate-pulse-glow">
                 [Local Dev OTP] Verification Code: <strong>{simulatedOtp}</strong>

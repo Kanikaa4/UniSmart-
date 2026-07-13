@@ -46,7 +46,7 @@ const handleMessage = async (req, res) => {
 
     try {
         const isMock = getDbMode();
-        
+
         // Check for optional authorization token
         const authHeader = req.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];
@@ -111,7 +111,7 @@ const handleMessage = async (req, res) => {
                         const dropProbability = Math.max(10, Math.round(baseProb + Math.random() * 8));
                         let triggerCause = 'Irregular attendance';
                         let recommendation = 'Schedule check-in email alert.';
-                        
+
                         if (stats.percentage < 70) {
                             triggerCause = 'Absenteeism exceeding 30% limit';
                             recommendation = 'Schedule 1-on-1 advisor review. Alert registrar.';
@@ -139,10 +139,10 @@ Active Student Count: ${counted} students.
 Class Average Attendance: ${avgAttendance}%.
 Number of students classified as at-risk (attendance < 85%): ${atRiskStudents.length} students.
 At-risk student details:
-${atRiskStudents.map((s, idx) => `- ${idx+1}. Name: ${s.name}, Roll: ${s.rollNumber}, Attendance: ${s.attendance}%, Drop Risk: ${s.dropProbability}%, Cause: "${s.triggerCause}", Recommendation: "${s.recommendation}"`).join('\n')}
+${atRiskStudents.map((s, idx) => `- ${idx + 1}. Name: ${s.name}, Roll: ${s.rollNumber}, Attendance: ${s.attendance}%, Drop Risk: ${s.dropProbability}%, Cause: "${s.triggerCause}", Recommendation: "${s.recommendation}"`).join('\n')}
 Complete Student List:
 ${students.map(s => `- ${s.name} (${s.rollNumber})`).join('\n')}`;
-            } 
+            }
             else if (user.role === 'admin') {
                 if (!isMock) {
                     try {
@@ -210,8 +210,8 @@ When responding:
             if (user.role === 'faculty') {
                 if (msg.includes('at risk') || msg.includes('risk') || msg.includes('drop') || msg.includes('fail') || msg.includes('intervention')) {
                     if (atRiskStudents.length > 0) {
-                        responseText = `Based on my machine learning analysis, you have **${atRiskStudents.length}** students classified as **at-risk** (below 85% attendance):\n\n` + 
-                            atRiskStudents.map((s, idx) => 
+                        responseText = `Based on my machine learning analysis, you have **${atRiskStudents.length}** students classified as **at-risk** (below 85% attendance):\n\n` +
+                            atRiskStudents.map((s, idx) =>
                                 `${idx + 1}. **${s.name}** (${s.rollNumber})\n` +
                                 `   - **Attendance:** ${s.attendance}%\n` +
                                 `   - **Estimated Drop Probability:** ${s.dropProbability}%\n` +
@@ -221,14 +221,14 @@ When responding:
                     } else {
                         responseText = `Excellent news, Dr. ${facultyName}! All students in your current roster satisfy the required margins, maintaining attendance levels at 85% or above.`;
                     }
-                } 
+                }
                 else if (msg.includes('average') || msg.includes('stats') || msg.includes('statistics') || msg.includes('attendance rates')) {
                     responseText = `Here is your class attendance summary for **Dr. ${facultyName}**:\n\n` +
                         `- **Assigned Student Count:** ${students.length} students\n` +
                         `- **Roster Average Attendance:** ${avgAttendance}%\n` +
                         `- **Interventions Pending:** ${atRiskStudents.length} students at risk\n\n` +
                         `You can view the dynamic graphical visualizations under the **AI Insights Engine** tab.`;
-                } 
+                }
                 else if (msg.includes('student') || msg.includes('roster') || msg.includes('class') || msg.includes('list')) {
                     if (students.length > 0) {
                         responseText = `Here is your current class roster along with their logged attendance:\n\n` +
@@ -249,7 +249,7 @@ When responding:
                 else if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey') || msg.includes('greetings') || msg.includes('who are you')) {
                     responseText = `Hello Dr. ${facultyName}! I am your UniSmart AI Academic Assistant. I have successfully verified your credentials. \n\nI can help you analyze student risk factors, look up attendance statistics, or inspect your student roster. What would you like to do?`;
                 }
-            } 
+            }
             else if (user.role === 'admin') {
                 if (msg.includes('faculty') || msg.includes('teacher') || msg.includes('instructor')) {
                     responseText = `There are currently **${facultyCount}** registered department faculty profiles in the UniSmart system:\n` +
@@ -326,14 +326,14 @@ When responding:
             }
         }
 
-        // Add a warning indicating that the API key was not configured and that this is a simulated response
-        const warningPrefix = `*🤖 Note: Gemini API key is not configured. Running in simulated fallback mode. Please add your GEMINI_API_KEY inside the server/.env file.* \n\n`;
-        return res.status(200).json({ success: true, reply: warningPrefix + responseText });
+//         // Add a warning indicating that the API key was not configured and that this is a simulated response
+//        //onst warningPrefix = `*🤖 Note: Gemini API key is not configured. Running in simulated fallback mode. Please add your GEMINI_API_KEY inside the server/.env file.* \n\n`;
+//         return res.status(200).json({ success: true, reply: warningPrefix + responseText });
 
-    } catch (err) {
-        console.error(err);
-        return res.status(500).json({ error: 'Chatbot message processing failed.' });
-    }
-};
+//     } catch (err) {
+//         console.error(err);
+//         return res.status(500).json({ error: 'Chatbot message processing failed.' });
+//     }
+// };
 
-module.exports = { handleMessage };
+//dule.exports = { handleMessage };
