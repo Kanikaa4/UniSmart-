@@ -8,7 +8,7 @@ import AIInsightsPanel from './components/AIInsightsPanel';
 import NotificationPanel from './components/NotificationPanel';
 import ChatbotWidget from './components/ChatbotWidget';
 
-const API_BASE_URL = 'import.meta.env.VITE_API_URL';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export default function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
