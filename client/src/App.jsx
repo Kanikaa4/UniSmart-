@@ -8,13 +8,13 @@ import AIInsightsPanel from './components/AIInsightsPanel';
 import NotificationPanel from './components/NotificationPanel';
 import ChatbotWidget from './components/ChatbotWidget';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'import.meta.env.VITE_API_URL';
 
 export default function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
   const [role, setRole] = useState(localStorage.getItem('role') || '');
-  
+
   // Navigation states
   const [view, setView] = useState('marketing'); // 'marketing' | 'dashboard'
   const [showLogin, setShowLogin] = useState(false);
@@ -62,7 +62,7 @@ export default function App() {
     setShowLogin(false);
     setView('dashboard');
     setActiveTab(userRole === 'admin' ? 'admin-overview' : 'faculty-attendance');
-    
+
     addNotif('Auth Successful', `Successfully logged in as ${userDetails.name || 'Administrator'}.`);
   };
 
@@ -80,13 +80,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bgbase">
-      
+
       {view === 'marketing' && (
         <LandingPage onLaunchPortal={() => setShowLogin(true)} />
       )}
 
       {showLogin && (
-        <LoginPortal 
+        <LoginPortal
           API_BASE_URL={API_BASE_URL}
           onLoginSuccess={handleLoginSuccess}
           onClose={() => setShowLogin(false)}
@@ -95,7 +95,7 @@ export default function App() {
 
       {view === 'dashboard' && user && (
         <div className="flex min-h-screen relative">
-          
+
           {/* Sidebar */}
           <aside className="w-[280px] border-r border-glassBorder bg-glass backdrop-blur-md flex flex-col fixed top-0 bottom-0 z-50">
             <div className="p-6 border-b border-glassBorder">
@@ -124,11 +124,10 @@ export default function App() {
                 <>
                   <button
                     onClick={() => setActiveTab('admin-overview')}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold transition-all ${
-                      activeTab === 'admin-overview' 
-                        ? 'bg-primaryIndigo/10 text-primaryIndigo border-l-[3px] border-primaryIndigo pl-3' 
-                        : 'text-textSecondary hover:bg-white/2 hover:text-white'
-                    }`}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold transition-all ${activeTab === 'admin-overview'
+                      ? 'bg-primaryIndigo/10 text-primaryIndigo border-l-[3px] border-primaryIndigo pl-3'
+                      : 'text-textSecondary hover:bg-white/2 hover:text-white'
+                      }`}
                   >
                     Dashboard Overview
                   </button>
@@ -137,31 +136,28 @@ export default function App() {
                 <>
                   <button
                     onClick={() => setActiveTab('faculty-attendance')}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold transition-all ${
-                      activeTab === 'faculty-attendance' 
-                        ? 'bg-primaryIndigo/10 text-primaryIndigo border-l-[3px] border-primaryIndigo pl-3' 
-                        : 'text-textSecondary hover:bg-white/2 hover:text-white'
-                    }`}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold transition-all ${activeTab === 'faculty-attendance'
+                      ? 'bg-primaryIndigo/10 text-primaryIndigo border-l-[3px] border-primaryIndigo pl-3'
+                      : 'text-textSecondary hover:bg-white/2 hover:text-white'
+                      }`}
                   >
                     Class Attendance
                   </button>
                   <button
                     onClick={() => setActiveTab('faculty-gradebook')}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold transition-all ${
-                      activeTab === 'faculty-gradebook' 
-                        ? 'bg-primaryIndigo/10 text-primaryIndigo border-l-[3px] border-primaryIndigo pl-3' 
-                        : 'text-textSecondary hover:bg-white/2 hover:text-white'
-                    }`}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold transition-all ${activeTab === 'faculty-gradebook'
+                      ? 'bg-primaryIndigo/10 text-primaryIndigo border-l-[3px] border-primaryIndigo pl-3'
+                      : 'text-textSecondary hover:bg-white/2 hover:text-white'
+                      }`}
                   >
                     Gradebook (Marks)
                   </button>
                   <button
                     onClick={() => setActiveTab('faculty-ai-insights')}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold transition-all ${
-                      activeTab === 'faculty-ai-insights' 
-                        ? 'bg-primaryIndigo/10 text-primaryIndigo border-l-[3px] border-primaryIndigo pl-3' 
-                        : 'text-textSecondary hover:bg-white/2 hover:text-white'
-                    }`}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold transition-all ${activeTab === 'faculty-ai-insights'
+                      ? 'bg-primaryIndigo/10 text-primaryIndigo border-l-[3px] border-primaryIndigo pl-3'
+                      : 'text-textSecondary hover:bg-white/2 hover:text-white'
+                      }`}
                   >
                     AI Insights Engine
                   </button>
@@ -170,7 +166,7 @@ export default function App() {
             </nav>
 
             <div className="p-4 border-t border-glassBorder">
-              <button 
+              <button
                 onClick={handleLogout}
                 className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg border border-glassBorder bg-white/2 text-xs font-semibold text-textSecondary hover:text-white hover:bg-white/5 transition-all"
               >
@@ -182,7 +178,7 @@ export default function App() {
 
           {/* Main dashboard content */}
           <main className="flex-1 pl-[280px] min-h-screen flex flex-col">
-            
+
             {/* Top Bar Header */}
             <header className="h-[80px] px-10 flex justify-between items-center border-b border-glassBorder sticky top-0 bg-bgbase/90 backdrop-blur-md z-45">
               <div>
@@ -197,8 +193,8 @@ export default function App() {
                 <button className="w-10 h-10 rounded-lg bg-white/2 border border-glassBorder text-textSecondary hover:text-white flex items-center justify-center transition-colors">
                   <Activity size={16} />
                 </button>
-                
-                <button 
+
+                <button
                   onClick={() => setNotifOpen(!notifOpen)}
                   className="w-10 h-10 rounded-lg bg-white/2 border border-glassBorder text-textSecondary hover:text-white flex items-center justify-center transition-colors relative"
                 >
@@ -208,7 +204,7 @@ export default function App() {
                   )}
                 </button>
 
-                <button 
+                <button
                   onClick={() => setView('marketing')}
                   className="bg-white/5 border border-glassBorder text-xs text-textSecondary hover:text-white px-4 py-2 rounded-lg flex items-center gap-1.5 hover:bg-white/10 transition-all font-semibold"
                 >
@@ -221,17 +217,17 @@ export default function App() {
             {/* Tab Viewport */}
             <div className="p-10 flex-1">
               {activeTab === 'admin-overview' && (
-                <AdminDashboard 
-                  token={token} 
-                  API_BASE_URL={API_BASE_URL} 
-                  onLogout={handleLogout} 
+                <AdminDashboard
+                  token={token}
+                  API_BASE_URL={API_BASE_URL}
+                  onLogout={handleLogout}
                   addNotif={addNotif}
                 />
               )}
               {activeTab === 'faculty-attendance' && (
-                <FacultyDashboard 
-                  token={token} 
-                  API_BASE_URL={API_BASE_URL} 
+                <FacultyDashboard
+                  token={token}
+                  API_BASE_URL={API_BASE_URL}
                   addNotif={addNotif}
                   triggerReloadAi={handleTriggerReloadAi}
                   user={user}
@@ -239,9 +235,9 @@ export default function App() {
                 />
               )}
               {activeTab === 'faculty-gradebook' && (
-                <FacultyDashboard 
-                  token={token} 
-                  API_BASE_URL={API_BASE_URL} 
+                <FacultyDashboard
+                  token={token}
+                  API_BASE_URL={API_BASE_URL}
                   addNotif={addNotif}
                   triggerReloadAi={handleTriggerReloadAi}
                   user={user}
@@ -249,8 +245,8 @@ export default function App() {
                 />
               )}
               {activeTab === 'faculty-ai-insights' && (
-                <AIInsightsPanel 
-                  token={token} 
+                <AIInsightsPanel
+                  token={token}
                   API_BASE_URL={API_BASE_URL}
                   reloadTrigger={aiReloadTrigger}
                 />
@@ -261,7 +257,7 @@ export default function App() {
 
           {/* Slide-out notification drawer */}
           {notifOpen && (
-            <NotificationPanel 
+            <NotificationPanel
               notifications={notifications}
               onClose={() => setNotifOpen(false)}
               onMarkRead={markNotifRead}
@@ -272,7 +268,7 @@ export default function App() {
       )}
 
       {/* Globally accessible AI Academic Assistant Chatbot */}
-      <ChatbotWidget 
+      <ChatbotWidget
         user={user}
         role={role}
         token={token}
