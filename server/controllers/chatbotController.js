@@ -327,7 +327,7 @@ When responding:
         }
 
         // Add a warning indicating that the API key was not configured and that this is a simulated response
-        const warningPrefix = ''`;
+        const warningPrefix = ``;
         return res.status(200).json({ success: true, reply: warningPrefix + responseText });
 
     } catch (err) {
