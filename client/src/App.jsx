@@ -7,6 +7,7 @@ import FacultyDashboard from './components/FacultyDashboard';
 import AIInsightsPanel from './components/AIInsightsPanel';
 import NotificationPanel from './components/NotificationPanel';
 import ChatbotWidget from './components/ChatbotWidget';
+import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -43,6 +44,21 @@ export default function App() {
   };
 
   const unreadNotifCount = notifications.filter(n => !n.read).length;
+
+  useEffect(() => {
+    const interceptor = axios.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+          handleLogout();
+        }
+        return Promise.reject(error);
+      }
+    );
+    return () => {
+      axios.interceptors.response.eject(interceptor);
+    };
+  }, []);
 
   useEffect(() => {
     if (token && user) {

@@ -68,8 +68,8 @@ const handleMessage = async (req, res) => {
         let students = [];
         let atRiskStudents = [];
         let avgAttendance = 80;
-        let facultyCount = 2;
-        let studentCount = 5;
+        let facultyCount = isMock ? mockStore.facultyList.length : 2;
+        let studentCount = isMock ? mockStore.studentList.length : 5;
 
         let subjects = [];
         if (user) {
@@ -252,13 +252,22 @@ When responding:
             }
             else if (user.role === 'admin') {
                 if (msg.includes('faculty') || msg.includes('teacher') || msg.includes('instructor')) {
+                    let listStr = "";
+                    if (isMock) {
+                        listStr = mockStore.facultyList.map(f => `- **${f.name}** (${f.department} department)`).join('\n');
+                    } else {
+                        try {
+                            const facs = await Faculty.find({});
+                            listStr = facs.map(f => `- **${f.name}** (${f.department} department)`).join('\n');
+                        } catch (err) {
+                            listStr = `- **Dr. Sarah Jenkins** (Computer Science department)\n- **Dr. Alan Turing** (Mathematics department)`;
+                        }
+                    }
                     responseText = `There are currently **${facultyCount}** registered department faculty profiles in the UniSmart system:\n` +
-                        `- **Dr. Sarah Jenkins** (Computer Science department)\n` +
-                        `- **Dr. Alan Turing** (Mathematics department)\n\n` +
-                        `As Super Admin, you can add new faculty members directly using the **Dashboard Overview** panel.`;
+                        listStr + `\n\nAs Super Admin, you can add new faculty members directly using the **Dashboard Overview** panel.`;
                 }
                 else if (msg.includes('student') || msg.includes('total')) {
-                    responseText = `The system database currently tracks **${studentCount}** students. All active records are currently assigned to the Computer Science department faculty. \n\nYou can upload and parse new batch rosters using the CSV uploader in your admin panel.`;
+                    responseText = `The system database currently tracks **${studentCount}** students. Roster records are assigned across departments such as Computer Science, Mathematics, and Physics. \n\nYou can upload and parse new batch rosters using the CSV uploader in your admin panel.`;
                 }
                 else if (msg.includes('stat') || msg.includes('system') || msg.includes('health') || msg.includes('database')) {
                     responseText = `**UniSmart System Diagnosis Report:**\n\n` +

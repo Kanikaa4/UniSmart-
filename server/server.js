@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const { connectDB } = require('./config/db');
+const { connectDB, getDbMode } = require('./config/db');
+const { seedDatabase } = require('./config/seed');
 const apiRoutes = require('./routes/api');
 
 const app = express();
@@ -41,6 +42,9 @@ app.use((err, req, res, next) => {
 // Start Server
 const startServer = async () => {
     await connectDB();
+    if (!getDbMode()) {
+        await seedDatabase();
+    }
     app.listen(PORT, () => {
         console.log(`UniSmart Server is actively running on http://localhost:${PORT}`);
     });
